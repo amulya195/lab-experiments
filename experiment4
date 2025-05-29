@@ -1,0 +1,142 @@
+creating and switching branches 
+
+git branch- to view all branches 
+git branch <branch-name> : will create a new branch
+git checkout <branch-name> : will switch to the designated branch
+
+
+merging branches and resolving conflicts
+git checkout <branch-name>
+git merge <branch name you want to merge>
+git merge --abort (to cancel the merge)
+
+resolve the conflict 
+stage and commit the files 
+and push them to the branch.
+then merge the branches.
+
+
+rebasing and merging
+git checkout <branch-name>
+git rebase <branch-name-you want to rebase>
+
+conflicts during rebase 
+add and stage the files 
+git rebase --continue
+git rebase --abort (if you want to cancel the rebase)
+
+pushing a rebased branch 
+git push --force-with-lease (force push is required here.)
+
+
+git interactive rebase 
+git rebase -i HEAD~3
+
+This opens an editor where you can:
+ pick >> Keep commit as is
+ squash >> Merge commits
+ edit>> Modify commit message
+
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+the end.
+=======
+
+
+conflict while merge.
+>>>>>>> 31cb4f48c9bde279871815fd7ac919d39e5aedf3
+=======
+>>>>>>> parent of 181ef69 (merge conflict)
+
+
+rebasing commit.
+rebase again
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+git rebase master
+Successfully rebased and updated refs/heads/expt4-branch.
+=======
+rebase-1
+<<<<<<< HEAD
+>>>>>>> af2ebf7 (commit-1 for rebase)
+=======
+rebase-1
+rebase-2
+>>>>>>> 8afa7f28864b1cf40490cefa37fb57fe51300da1
+=======
+rebase-2
+>>>>>>> 8afa7f2 (commit-2 for rebase)
+
+
+
+
+
+
+
+git checkout expt4-branch
+(make 2 commits)
+git rebase master 
+(if faced with rebase conflict)
+git status 
+git add <conflict-file>
+git rebase --continue
+
+git checkout master 
+git rebase expt4-branch (rebase against other branch)
+(rebase complete)
+
+
+
+
+ 
+before rebase in master: 
+
+git log --oneline
+9ac93d1 (HEAD -> master, origin/master, origin/HEAD) experiment 4 complete.
+abeafd8 rebase.
+dd3ffe4 rebasing
+3b8bee5 resolve conflict
+798ff93 merge conflict
+181ef69 merge conflict
+31cb4f4 merge branch conflict
+3404cb9 experiment 4.
+f28b297 resloving merge conflicts
+9809666 resloving merge conflicts
+497d731 merge conflict
+673f708 experiment 3.
+d73e592 experiment 2 complete.
+4a3fe48 experiment 2.
+a2a1360 expriment 01 complete.
+c112f2f added more contents to the file
+11f81bc for git reset to previous commit
+1195244 experiment 01
+
+
+after rebase in master against expt4-branch:
+
+git log --oneline
+6e924db (HEAD -> master, expt4-branch) commit-2 for rebase
+06b8425 rebaseconflict
+d6816e3 rebase conflict
+8afa7f2 (origin/expt4-branch) commit-2 for rebase
+af2ebf7 commit-1 for rebase
+9ac93d1 (origin/master, origin/HEAD) experiment 4 complete.
+abeafd8 rebase.
+dd3ffe4 rebasing
+3b8bee5 resolve conflict
+798ff93 merge conflict
+181ef69 merge conflict
+31cb4f4 merge branch conflict
+3404cb9 experiment 4.
+f28b297 resloving merge conflicts
+9809666 resloving merge conflicts
+497d731 merge conflict
+673f708 experiment 3.
+d73e592 experiment 2 complete.
+4a3fe48 experiment 2.
+a2a1360 expriment 01 complete.
+c112f2f added more contents to the file
+11f81bc for git reset to previous commit
+1195244 experiment 01
