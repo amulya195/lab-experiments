@@ -1,0 +1,6 @@
+Experiment 8: Show last 5 commits
+
+Command:
+git log --oneline -n 5
+
+This command shows the last 5 commits in short format (hash + message).
